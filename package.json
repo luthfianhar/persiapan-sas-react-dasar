@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy":"npm run build",
+    "predeploy": "gh-pages -d dist -r https://github.com/luthfianhar/persiapan-sas-react-dasar.git"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",

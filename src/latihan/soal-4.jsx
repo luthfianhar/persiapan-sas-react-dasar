@@ -10,11 +10,13 @@ import { useState } from "react";
 */
 
 function FormSiswa() {
-  // Lengkapi state untuk form di sini
+  const [nama, setNama] = useState("");
+  const [kelas, setKelas] = useState("");
+  const [dataSiswa, setDataSiswa] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Lengkapi logika saat form disubmit di sini
+    setDataSiswa({ nama, kelas });
   }
 
   return (
@@ -27,6 +29,8 @@ function FormSiswa() {
         {/* Hubungkan input ini dengan state menggunakan value dan onChange */}
         <input
           type="text"
+          value={nama}
+          onChange={(e) => setNama(e.target.value)}
           placeholder="Masukkan nama siswa"
           className="w-full px-3 py-2 border border-gray-300 rounded-lg"
         />
@@ -37,6 +41,8 @@ function FormSiswa() {
         {/* Hubungkan input ini dengan state menggunakan value dan onChange */}
         <input
           type="text"
+          value={kelas}
+          onChange={(e) => setKelas(e.target.value)}
           placeholder="Contoh: XI B"
           className="w-full px-3 py-2 border border-gray-300 rounded-lg"
         />
@@ -47,7 +53,11 @@ function FormSiswa() {
       </button>
 
       {/* Tampilkan preview nilai input / hasil submit di sini */}
-      <p className="text-sm text-gray-500">Preview data akan muncul di sini</p>
+      {dataSiswa && (
+        <p className="text-sm text-gray-500">
+          {dataSiswa.nama} - {dataSiswa.kelas}
+        </p>
+      )}
     </form>
   );
 }
@@ -55,6 +65,6 @@ function FormSiswa() {
 export default FormSiswa;
 
 // 1. Apa yang dimaksud dengan Controlled Component / Controlled Form di React, dan apa peran atribut 'value' serta 'onChange'?
-//   Jawaban:
+//   Jawaban: Input yang nilainya diatur oleh state React. value menampilkan nilai state, sedangkan onChange memperbarui state saat input berubah.
 // 2. Mengapa kita perlu memanggil e.preventDefault() di dalam handler onSubmit pada form React?
-//   Jawaban:
+//   Jawaban: Agar pengiriman form tidak memuat ulang halaman.
